@@ -5,19 +5,3 @@ bmcp <- function(burn, N, X, alpha1, beta1, alpha2, beta2, a, d, mu0, s02) {
     .Call(`_bmcp_bmcp`, burn, N, X, alpha1, beta1, alpha2, beta2, a, d, mu0, s02)
 }
 
-rcpparma_hello_world <- function() {
-    .Call(`_bmcp_rcpparma_hello_world`)
-}
-
-rcpparma_outerproduct <- function(x) {
-    .Call(`_bmcp_rcpparma_outerproduct`, x)
-}
-
-rcpparma_innerproduct <- function(x) {
-    .Call(`_bmcp_rcpparma_innerproduct`, x)
-}
-
-rcpparma_bothproducts <- function(x) {
-    .Call(`_bmcp_rcpparma_bothproducts`, x)
-}
-
