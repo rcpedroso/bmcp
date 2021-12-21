@@ -14,7 +14,7 @@ If installation fails, please report the problem to ricardocunhap@gmail.com. Any
 ### Case study 1 of [Pedroso et al (2020)](https://arxiv.org/abs/2107.11456)
 
 ```R
-require(bmcp)
+Comming soon!
 
 
 ```
