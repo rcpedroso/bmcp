@@ -1,5 +1,5 @@
 # `bmcp`
-R Package for the Normal data application of the Bayesian multipartition change point model introduced in [Pedroso et al (2020)](https://arxiv.org/abs/2107.11456).
+R package for the Normal data application of the Bayesian multipartition change point model introduced in [Pedroso et al (2020)](https://arxiv.org/abs/2107.11456).
 
 # Install
 To install `bmcp`, consider the code
