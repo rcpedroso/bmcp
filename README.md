@@ -87,14 +87,12 @@ max1 = max(eps.U[,'N1'])
 max2 = max(eps.V[,'N2'])
 top = 5
 
-# Table 4, rho1 posterior distribution
-# (top most probable partitions for the mean)
+# Table 4, rho1 posterior distribution (top most probable partitions for the mean)
 top.U = as_tibble(eps.U) %>% group_by(across(starts_with("t"))) %>%
   summarize(p=n()/ns) %>% arrange(desc(p)) %>% head(top)
 top.U[1:top,c(1:max1,n)]
 
-# Table 4, rho2 posterior distribution
-# (top most probable partitions for the variance)
+# Table 4, rho2 posterior distribution (top most probable partitions for the variance)
 top.V = as_tibble(eps.V) %>% group_by(across(starts_with("t"))) %>%
   summarize(p=n()/ns) %>% arrange(desc(p)) %>% head(top)
 top.V[1:top,c(1:max2,n)]
