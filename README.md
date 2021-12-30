@@ -35,3 +35,7 @@ plot(y=Y, x=Yt, type="l", xaxt="n", cex.lab=1.2,
 axis(1, at=Yt[seq(1,n,12)], labels=Ytq[seq(1,n,12)], cex.axis=1)
 
 ```
+
+![EPS](figure/IR_data.png)
+
+
