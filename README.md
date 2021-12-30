@@ -1,5 +1,5 @@
 # `bmcp`
-R package for the Normal data application of the Bayesian multipartition change point model introduced in [Pedroso et al (2020)](https://arxiv.org/abs/2107.11456).
+R package for the Normal data application of the Bayesian multipartition change point model introduced in [Pedroso et al (2021)](https://arxiv.org/abs/2107.11456).
 
 # Install
 To install `bmcp`, consider the code
@@ -11,7 +11,7 @@ devtools::install_github("rcpedroso/bmcp")
 If installation fails, please report the problem to ricardocunhap@gmail.com. Any other problems or comments can also be reported!
 
 # Code example
-### Case study 1 of [Pedroso et al (2020)](https://arxiv.org/abs/2107.11456)
+### Case study 1 of [Pedroso et al (2021)](https://arxiv.org/abs/2107.11456)
 
 ```R
 ### loading required packages
@@ -23,21 +23,35 @@ require(calibrate)
 require(dplyr)
 
 
-### data
+
+### data set
 data(RealInt) # available in bcp package
 Y <- as.vector(RealInt)
 Yt <- as.vector(time(RealInt))
 Ytq <- paste0(Yt,"/",((Yt-floor(Yt))+.25)/.25)
 n = length(Y)
 
+
+
+### Figure 10
 plot(y=Y, x=Yt, type="l", xaxt="n", cex.lab=1.2,
      xlab="Quarters", ylab="US ex-post interest rate")
 axis(1, at=Yt[seq(1,n,12)], labels=Ytq[seq(1,n,12)], cex.axis=1)
 
+
+
+### MCMC run (run time: ~30 seconds using a computer with an Intel® Core i7-7500U/2.9GHz with 16Gb of RAM)
+burn = 3e4
+ns = 2e4
+niter = burn + ns
+
+set.seed(1000)
+bmcp.est <- bmcp(burn=burn, N=niter, X=Y,
+                 alpha1=1, beta1=1, alpha2=1, beta2=1,
+                 a=0.1, d=2.1,
+                 mu0=0, s02=100)
+
 ```
 
-<p align="center" width="100%">
-  <img src="figure/IR_data.png" width="500"/>
-</p>
 
 
