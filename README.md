@@ -67,12 +67,10 @@ axis(1, at=Yt[seq(1,n,12)], labels=Ytq[seq(1,n,12)], cex.axis=1)
 
 
 ### MCMC (run time: ~30 seconds using a computer with an Intel® Core i7-7500U/2.9GHz with 16Gb of RAM)
-
 # settings
 burn = 3e4
 ns = 2e4
 niter = burn + ns
-
 # run
 set.seed(1000)
 bmcp.est <- bmcp(burn=burn, N=niter, X=Y,
@@ -80,24 +78,23 @@ bmcp.est <- bmcp(burn=burn, N=niter, X=Y,
 
 
 ### posterior distributions of partitions rho1 and rho2
-
 # posterior samples of the end points
 eps.U = u_to_index(bmcp.est$u[,-n])
 eps.V = u_to_index(bmcp.est$v[,-n])
-
 colnames(eps.U) <- c(paste0('t',1:(n-1)),'N1')
 colnames(eps.V) <- c(paste0('t',1:(n-1)),'N2')
-
 max1 = max(eps.U[,'N1'])
 max2 = max(eps.V[,'N2'])
 top = 5
 
-# Table 4
-# rho1 posterior distribution (top most probable partitions for the mean)
+# Table 4, rho1 posterior distribution
+# (top most probable partitions for the mean)
 top.U = as_tibble(eps.U) %>% group_by(across(starts_with("t"))) %>%
   summarize(p=n()/ns) %>% arrange(desc(p)) %>% head(top)
 top.U[1:top,c(1:max1,n)]
-# rho2 posterior distribution (top most probable partitions for the variance)
+
+# Table 4, rho2 posterior distribution
+# (top most probable partitions for the variance)
 top.V = as_tibble(eps.V) %>% group_by(across(starts_with("t"))) %>%
   summarize(p=n()/ns) %>% arrange(desc(p)) %>% head(top)
 top.V[1:top,c(1:max2,n)]
@@ -108,17 +105,14 @@ eps_s2 = c(51)
 
 
 ### mean and variance posterior estimates
-
 # HPD interval
 pHPD = 0.9
 bmcp_mu.hpd <- MCMCsummary(bmcp.est$mu, HPD=T, hpd_prob=pHPD, Rhat=F, n.eff=F)
 bmcp_s2.hpd <- MCMCsummary(bmcp.est$s2, HPD=T, hpd_prob=pHPD, Rhat=F, n.eff=F)
-
 # moving variance
 w = 2
 mvar <- array(NA_real_,n)
 for (i in (1+w):(n-w)) mvar[i] <- var(Y[(i-w):(i+w)]) 
-
 # plot settings
 xby=20;
 ylim_mu = c(-6.5,12)
@@ -173,7 +167,6 @@ bmcp_PE_s2
 ### posterior samples of the number of changes
 N1 = rowSums(1-bmcp.est$u[,-n])
 N2 = rowSums(1-bmcp.est$v[,-n])
-
 tab.U = table(N1)/(niter-burn)
 tab.V = table(N2)/(niter-burn)
 
@@ -186,14 +179,11 @@ barplot(tab.V, ylim=c(0,1))
 title(xlab=expression(N[2]*" | "*X), family = "serif", line=2.5, cex.lab=1.5)
 
 
-
 ### posterior probabilities of a change
 prob.U = ifelse(colMeans(1-bmcp.est$u[,-n])==0,NA,colMeans(1-bmcp.est$u[,-n]))
 prob.V = ifelse(colMeans(1-bmcp.est$v[,-n])==0,NA,colMeans(1-bmcp.est$v[,-n]))
-
 th.mu = 0.2
 th.s2 = 0.2
-
 
 # Figure 13(a)
 plot(prob.U, type='p', lwd=1.5, pch=20, col='black', cex=1.5,
@@ -209,7 +199,6 @@ textxy(X=leg[1,2]-7, Y=leg[2,2], labs=round(leg[1,2],2), cex=.95, offset=.75, lw
 textxy(X=leg[1,3]+1, Y=leg[2,3], labs=round(leg[1,3],2), cex=.95, offset=.75, lwd=5)
 textxy(X=leg[1,4]+1, Y=leg[2,4], labs=round(leg[1,4],2), cex=.95, offset=.75, lwd=5)
 
-
 # Figure 13(b)
 plot(prob.V, type= "p", lwd=1.5, pch=20, col='black', cex=1.5,
      bty="n", yaxt="n", xlab='', ylab='', ylim=c(0,1))
@@ -220,6 +209,7 @@ abline(v=eps_mu,col='black',lwd=2.5, lty='dotted')
 abline(v=eps_s2,col='black',lwd=1.5, lty='longdash')
 leg <- rbind(which(prob.V>th.s2),prob.V[which(prob.V>th.s2)])
 textxy(X=leg[1,]+2, Y=leg[2,], labs=round(leg[1,],2), cex=.95, offset=.75, lwd=5)
+
 
 ```
 
