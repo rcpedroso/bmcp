@@ -38,4 +38,7 @@ axis(1, at=Yt[seq(1,n,12)], labels=Ytq[seq(1,n,12)], cex.axis=1)
 
 ![EPS](figure/IR_data.png)
 
+<img src="figure/IR_data.png" width="200"/>
+
+
 
