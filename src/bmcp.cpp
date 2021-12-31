@@ -318,7 +318,7 @@ int bmcp_Rv(arma::rowvec X, arma::rowvec V, int i, arma::rowvec mu, double ps, d
 /// bmcp
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // [[Rcpp::export]]
-Rcpp::List bmcp(int burn, int N,               // sample configuration
+Rcpp::List bmcp(int burn, int ns,              // sample configuration
                 arma::rowvec X,                // observations
                 double alpha1, double beta1,   // p1 prior
                 double alpha2, double beta2,   // p2 prior
@@ -326,6 +326,7 @@ Rcpp::List bmcp(int burn, int N,               // sample configuration
                 double mu0, double s02) {      // mu prior
   
   int n = X.size();
+  int N = burn + ns;
   arma::Col<int> b1(N), b2(N);
   arma::colvec p1(N), p2(N);
   arma::mat s2 = arma::zeros(N,n);

@@ -12,13 +12,13 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // bmcp
-Rcpp::List bmcp(int burn, int N, arma::rowvec X, double alpha1, double beta1, double alpha2, double beta2, double a, double d, double mu0, double s02);
-RcppExport SEXP _bmcp_bmcp(SEXP burnSEXP, SEXP NSEXP, SEXP XSEXP, SEXP alpha1SEXP, SEXP beta1SEXP, SEXP alpha2SEXP, SEXP beta2SEXP, SEXP aSEXP, SEXP dSEXP, SEXP mu0SEXP, SEXP s02SEXP) {
+Rcpp::List bmcp(int burn, int ns, arma::rowvec X, double alpha1, double beta1, double alpha2, double beta2, double a, double d, double mu0, double s02);
+RcppExport SEXP _bmcp_bmcp(SEXP burnSEXP, SEXP nsSEXP, SEXP XSEXP, SEXP alpha1SEXP, SEXP beta1SEXP, SEXP alpha2SEXP, SEXP beta2SEXP, SEXP aSEXP, SEXP dSEXP, SEXP mu0SEXP, SEXP s02SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< int >::type burn(burnSEXP);
-    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type ns(nsSEXP);
     Rcpp::traits::input_parameter< arma::rowvec >::type X(XSEXP);
     Rcpp::traits::input_parameter< double >::type alpha1(alpha1SEXP);
     Rcpp::traits::input_parameter< double >::type beta1(beta1SEXP);
@@ -28,7 +28,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type d(dSEXP);
     Rcpp::traits::input_parameter< double >::type mu0(mu0SEXP);
     Rcpp::traits::input_parameter< double >::type s02(s02SEXP);
-    rcpp_result_gen = Rcpp::wrap(bmcp(burn, N, X, alpha1, beta1, alpha2, beta2, a, d, mu0, s02));
+    rcpp_result_gen = Rcpp::wrap(bmcp(burn, ns, X, alpha1, beta1, alpha2, beta2, a, d, mu0, s02));
     return rcpp_result_gen;
 END_RCPP
 }
