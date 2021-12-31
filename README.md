@@ -21,10 +21,10 @@ Executes the partially colapsed Gibbs sampler scheme given in Algorithm 1 to sam
 burn: number of initial samples to be discarded as a burn-in period.\
 ns: number of final samples to be generated.\
 X: vector of observations.\
-alpha1,beta1: parameter values for the Beta prior of the cohesion parameter $p_1$.\
-alpha2,beta2: parameter values for the Beta prior of the cohesion parameter $p_2$.\
-a,d: parameter values for the Inverse-Gamma prior of $\sigma_{j_2}^{2\star}$.\
-mu0,s02: parameter values for the Normal prior of $\mu_{j_1}^\star$.\
+alpha1,beta1: parameter values for the Beta prior of the cohesion parameter p1.\
+alpha2,beta2: parameter values for the Beta prior of the cohesion parameter p2.\
+a,d
+mu0,s02
 
 **output:**\
 
