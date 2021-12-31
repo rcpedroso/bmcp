@@ -4,39 +4,36 @@ R package for the Normal data application of the Bayesian multipartition change 
 
 # Install
 To install `bmcp`, consider the code
-
 ```R
 install.packages("devtools")
 devtools::install_github("rcpedroso/bmcp")
 ```
+
 If installation fails, please report the problem to ricardocunhap@gmail.com. Any other problems or comments can also be reported!
 
 
-# Functions available in `bmcp` package
+# Available functions in the `bmcp` package
 
 ### `bmcp`
-Executes the MCMC algorithm to sample from the posterior distribution
-described in section 3.2
+Executes the partially colapsed Gibbs sampler scheme given in Algorithm 1 to sample from the posterior distribution described in section 3.2.
 
-input:
+**input:**\
+burn: number of initial samples to be discarded as a burn-in period.\
+ns: number of final samples to be generated.\
+X: vector of observations.\
+alpha1,beta1: parameter values for the Beta prior of the cohesion parameter $p_1$.\
+alpha2,beta2: parameter values for the Beta prior of the cohesion parameter $p_2$.\
+a,d: parameter values for the Inverse-Gamma prior of $\sigma_{j_2}^{2\star}$.\
+mu0,s02: parameter values for the Normal prior of $\mu_{j_1}^\star$.\
 
-burn
-N=niter
-X=Y
-alpha1,beta1
-alpha2,beta2
-a,d
-mu0,s02
-
-output:
+**output:**\
 
 ### `u_to_index`
-input: any matrix M of 0/1 elements
+input: any matrix M of 0/1 elements.
+
 output: if M has m rows and (n-1) columns, the function returns a matrix with m rows
 and n columns where the elements indicate the positions of the 0's in each row
-and column n indicates the number of 0's in each respective row.
-If M is the matrix where each line is a sample of some specific partition, the function
-returns the end points and the number of end points of each sample.
+and column n indicates the number of 0's in each respective row. If M is the matrix where each line is a sample of some specific partition, the function returns the end points and the number of end points of each sample.
 
 
 # Code example
@@ -66,14 +63,14 @@ plot(y=Y, x=Yt, type="l", xaxt="n", cex.lab=1.2,
 axis(1, at=Yt[seq(1,n,12)], labels=Ytq[seq(1,n,12)], cex.axis=1)
 
 
-### MCMC (run time: ~30 seconds using a computer with an Intel® Core i7-7500U/2.9GHz with 16Gb of RAM)
+### MCMC (run time: approx. 30s using a computer with an Intel® Core i7-7500U/2.9GHz with 16Gb of RAM)
 # settings
 burn = 3e4
 ns = 2e4
 niter = burn + ns
 # run
 set.seed(1000)
-bmcp.est <- bmcp(burn=burn, N=niter, X=Y,
+bmcp.est <- bmcp(burn=burn, ns=ns, X=Y,
                  alpha1=1, beta1=1, alpha2=1, beta2=1, a=0.1, d=2.1, mu0=0, s02=100)
 
 
