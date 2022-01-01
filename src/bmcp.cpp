@@ -399,9 +399,9 @@ Rcpp::List bmcp(int burn, int ns,              // sample configuration
   out["b1"] = b1.subvec( burn, N-1 );
   out["b2"] = b2.subvec( burn, N-1 );
   out["mu"] = mu.submat( burn, 0, N-1, n-1 );
-  out["s2"] = s2.submat( burn, 0, N-1, n-1 );;
-  out["u"] = u.submat( burn, 0, N-1, n-1 );;
-  out["v"] = v.submat( burn, 0, N-1, n-1 );;
+  out["s2"] = s2.submat( burn, 0, N-1, n-1 );
+  out["u"] = u.submat( burn, 0, N-1, n-1 );
+  out["v"] = v.submat( burn, 0, N-1, n-1 );
   out["alpha1"] = alpha1;
   out["beta1"] = beta1;
   out["alpha2"] = alpha2;
