@@ -176,8 +176,8 @@ bmcp_PE_s2
 ### posterior samples of the number of changes
 N1 = rowSums(1-bmcp.est$u[,-n])
 N2 = rowSums(1-bmcp.est$v[,-n])
-tab.U = table(N1)/(niter-burn)
-tab.V = table(N2)/(niter-burn)
+tab.U = table(N1)/ns
+tab.V = table(N2)/ns
 
 # Figure 12(a)
 barplot(tab.U, ylim=c(0,1))
