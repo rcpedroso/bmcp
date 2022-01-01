@@ -17,33 +17,38 @@ If installation fails, please report the problem to ricardocunhap@gmail.com. Any
 ### `bmcp`
 Executes the partially colapsed Gibbs sampler scheme given in Algorithm 1 to sample from the posterior distribution described in section 3.2.
 
-**input:**\
-burn: number of initial samples to be discarded as a burn-in period.\
-ns: number of final samples to be generated.\
-X: vector of observations.\
-alpha1,beta1: parameter values for the Beta prior of the cohesion parameter p1.\
-alpha2,beta2: parameter values for the Beta prior of the cohesion parameter p2.\
-a,d: parameter values for the Inverse-Gamma prior of the cluster variance.\
-mu0,s02: parameter values for the Normal prior of the cluster mean.\
+**Input:**
 
-**output:**\ a list object with the following objects:\
-p1: vector of samples of the parameter p1.\
-p2: vector of samples of the parameter p2.\
-b1: vector of samples of the number of blocks in rho1.\
-b2: vector of samples of the number of blocks in rho2.\
-mu: matrix of samples of the mean vector.\
-s2: matrix of samples of the variance vector.\
-u: matrix of samples of the partition rho1.\
-v: matrix of samples of the partition rho2.\
-alpha1,beta1,alpha2,beta2,mu0,s02,a,d: inputed parameter values.\
+- burn: number of initial samples to be discarded as a burn-in period.
+- ns: number of final samples to be generated.
+- X: vector of observations.
+- alpha1,beta1: parameter values for the Beta prior of the cohesion parameter p1.
+- alpha2,beta2: parameter values for the Beta prior of the cohesion parameter p2.
+- a,d: parameter values for the Inverse-Gamma prior of the cluster variance.
+- mu0,s02: parameter values for the Normal prior of the cluster mean.
+
+**Output:** a list object with the following objects:
+
+- p1: vector of samples of the parameter p1.
+- p2: vector of samples of the parameter p2.
+- b1: vector of samples of the number of blocks in rho1.
+- b2: vector of samples of the number of blocks in rho2.
+- mu: matrix of samples of the mean vector.
+- s2: matrix of samples of the variance vector.
+- u: matrix of samples of the partition rho1.
+- v: matrix of samples of the partition rho2.
+- alpha1,beta1,alpha2,beta2,mu0,s02,a,d: parameter values.
+
+
 
 
 ### `u_to_index`
-**input:** any matrix M of 0/1 elements.
+**Input:** any matrix M of 0/1 elements.
 
-**output:** if M has m rows and (n-1) columns, the function returns a matrix with m rows
+**Output:** if M has m rows and (n-1) columns, the function returns a matrix with m rows
 and n columns where the elements indicate the positions of the 0's in each row
-and column n indicates the number of 0's in each respective row. If M is the matrix where each line is a sample of some specific partition, the function returns the end points and the number of end points of each sample.
+and column n indicates the number of 0's in each respective row. If M is the matrix where each line is a sample of some specific partition, the function returns the end points
+and the number of end points of each sample.
 
 
 # Code example
