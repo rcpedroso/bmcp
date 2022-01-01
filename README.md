@@ -27,7 +27,7 @@ Executes the partially colapsed Gibbs sampler scheme given in Algorithm 1 to sam
 - a,d: parameter values for the Inverse-Gamma prior of the cluster variance.
 - mu0,s02: parameter values for the Normal prior of the cluster mean.
 
-**Output:** a list object with the following objects:
+**Output:** an object of class `list` having the following objects:
 
 - p1: vector of samples of the parameter p1.
 - p2: vector of samples of the parameter p2.
@@ -82,7 +82,6 @@ axis(1, at=Yt[seq(1,n,12)], labels=Ytq[seq(1,n,12)], cex.axis=1)
 # settings
 burn = 3e4
 ns = 2e4
-niter = burn + ns
 # run
 set.seed(1000)
 bmcp.est <- bmcp(burn=burn, ns=ns, X=Y,
