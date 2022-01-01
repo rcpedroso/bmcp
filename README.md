@@ -37,9 +37,7 @@ Executes the partially colapsed Gibbs sampler scheme given in Algorithm 1 to sam
 - s2: matrix of samples of the variance vector.
 - u: matrix of samples of the partition rho1.
 - v: matrix of samples of the partition rho2.
-- alpha1,beta1,alpha2,beta2,mu0,s02,a,d: parameter values.
-
-
+- alpha1,beta1,alpha2,beta2,mu0,s02,a,d: parameter values considered as input.
 
 
 ### `u_to_index`
