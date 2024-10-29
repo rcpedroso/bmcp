@@ -1,5 +1,5 @@
 # `bmcp`
-R package for the Normal data application of the Bayesian multipartition change point model introduced in [Pedroso et al (2021)](https://arxiv.org/abs/2107.11456).
+R package for the Normal data application of the Bayesian multipartition change point model introduced in [Pedroso et al (2023)](https://doi.org/10.1007/s11749-023-00851-4).
 
 
 # Install
@@ -50,7 +50,7 @@ and the number of end points of each sample.
 
 
 # Code example
-### Case study 1 of [Pedroso et al (2021)](https://arxiv.org/abs/2107.11456)
+### Case study of [Pedroso et al (2023)](https://doi.org/10.1007/s11749-023-00851-4)
 
 ```R
 ### loading required packages
